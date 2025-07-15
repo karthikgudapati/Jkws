@@ -69,6 +69,8 @@
       text-align: center;
       min-width: 300px;
       font-family: 'Press Start 2P', cursive;
+      opacity: 0;
+      transition: opacity 0.2s;
     }
     .loader-content h2, .loader-content p {
       color: #111;
@@ -163,8 +165,17 @@
     document.addEventListener('DOMContentLoaded', function() {
       const loadingBar = document.getElementById('loadingBar');
       const loader = document.getElementById('loader');
+      const loaderContent = document.querySelector('.loader-content');
       const minDisplayTime = 5000; // 5 seconds
       const startTime = Date.now();
+      // Wait for font to load before showing loader content
+      if (document.fonts) {
+        document.fonts.load('1rem "Press Start 2P"').then(function() {
+          loaderContent.style.opacity = 1;
+        });
+      } else {
+        loaderContent.style.opacity = 1;
+      }
       // Animate loading bar over 5 seconds
       function animateBar() {
         const elapsed = Date.now() - startTime;
