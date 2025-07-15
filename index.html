@@ -45,19 +45,75 @@
     .dropdown:hover .dropdown-content {
       display: block;
     }
+    #loader {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      width: 100vw; height: 100vh;
+      background: #000;
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.6s;
+    }
+    #loader.fade-out {
+      opacity: 0;
+      pointer-events: none;
+    }
+    .loader-content {
+      background: #fff;
+      padding: 2rem 3rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.15);
+      text-align: center;
+      min-width: 300px;
+    }
+    .loader-content h2, .loader-content p {
+      color: #111;
+      margin: 0 0 1rem 0;
+    }
+    .loading-bar-container {
+      width: 100%;
+      background: #eee;
+      border-radius: 8px;
+      height: 12px;
+      margin: 1.5rem 0 1rem 0;
+      overflow: hidden;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+    }
+    .loading-bar {
+      height: 100%;
+      width: 0%;
+      background: #111;
+      border-radius: 8px 0 0 8px;
+      transition: width 0.3s ease;
+    }
   </style>
 </head>
 <body>
   <!-- Startup/Loading Screen -->
   <div id="loader">
     <div class="loader-content">
-      <div class="spinner"></div>
       <h2>Jana Kalyan Welfare Society</h2>
+      <div class="loading-bar-container">
+        <div class="loading-bar" id="loadingBar"></div>
+      </div>
       <p>Loading...</p>
     </div>
   </div>
   <script>
+    // Animate loading bar
+    let progress = 0;
+    const loadingBar = document.getElementById('loadingBar');
+    const interval = setInterval(() => {
+      progress += Math.random() * 10 + 5; // randomize for effect
+      if (progress > 100) progress = 100;
+      loadingBar.style.width = progress + '%';
+      if (progress === 100) clearInterval(interval);
+    }, 60);
     window.addEventListener('load', function() {
+      progress = 100;
+      loadingBar.style.width = '100%';
       const loader = document.getElementById('loader');
       loader.classList.add('fade-out');
       setTimeout(() => loader.style.display = 'none', 600);
