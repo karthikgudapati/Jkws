@@ -101,24 +101,6 @@
       <p>Loading...</p>
     </div>
   </div>
-  <script>
-    // Animate loading bar
-    let progress = 0;
-    const loadingBar = document.getElementById('loadingBar');
-    const interval = setInterval(() => {
-      progress += Math.random() * 10 + 5; // randomize for effect
-      if (progress > 100) progress = 100;
-      loadingBar.style.width = progress + '%';
-      if (progress === 100) clearInterval(interval);
-    }, 60);
-    window.addEventListener('load', function() {
-      progress = 100;
-      loadingBar.style.width = '100%';
-      const loader = document.getElementById('loader');
-      loader.classList.add('fade-out');
-      setTimeout(() => loader.style.display = 'none', 600);
-    });
-  </script>
   <header>
     <nav>
       <a href="about.html">About</a>
@@ -174,5 +156,41 @@
   <footer>
     &copy; 2025 Hope for All. All rights reserved.
   </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const loadingBar = document.getElementById('loadingBar');
+      const loader = document.getElementById('loader');
+      const minDisplayTime = 5000; // 5 seconds
+      const startTime = Date.now();
+      // Animate loading bar over 5 seconds
+      function animateBar() {
+        const elapsed = Date.now() - startTime;
+        const percent = Math.min((elapsed / minDisplayTime) * 100, 100);
+        loadingBar.style.width = percent + '%';
+        if (percent < 100) {
+          requestAnimationFrame(animateBar);
+        }
+      }
+      animateBar();
+      // Wait for both: page load and 5 seconds
+      let pageLoaded = false;
+      let minTimeElapsed = false;
+      function tryHideLoader() {
+        if (pageLoaded && minTimeElapsed) {
+          loader.classList.add('fade-out');
+          setTimeout(() => loader.style.display = 'none', 600);
+        }
+      }
+      setTimeout(function() {
+        minTimeElapsed = true;
+        tryHideLoader();
+      }, minDisplayTime);
+      window.addEventListener('load', function() {
+        pageLoaded = true;
+        tryHideLoader();
+      });
+    });
+  </script>
 </body>
 </html>
