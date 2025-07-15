@@ -48,6 +48,21 @@
   </style>
 </head>
 <body>
+  <!-- Startup/Loading Screen -->
+  <div id="loader">
+    <div class="loader-content">
+      <div class="spinner"></div>
+      <h2>Jana Kalyan Welfare Society</h2>
+      <p>Loading...</p>
+    </div>
+  </div>
+  <script>
+    window.addEventListener('load', function() {
+      const loader = document.getElementById('loader');
+      loader.classList.add('fade-out');
+      setTimeout(() => loader.style.display = 'none', 600);
+    });
+  </script>
   <header>
     <nav>
       <a href="about.html">About</a>
