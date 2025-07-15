@@ -128,7 +128,7 @@
         <div class="loading-bar-container">
           <div class="loading-bar" id="loadingBar"></div>
         </div>
-        <p>Loading...</p>
+        <p>Loading<span id="loading-dots"></span></p>
       </div>
     </div>
     <div class="loader-half loader-bottom"></div>
@@ -151,13 +151,13 @@
     <p>Empowering communities, changing lives.</p>
   </header>
   <section class="hero">
-    <h1>Welcome to Hope for All</h1>
-    <p>Join us in making a difference. Together, we can build a better future for everyone.</p>
+    <h1>Jana Kalyan Welfare Society</h1>
+    <p>India's premier non-profit organization.</p>
     <a href="#contact"><button>Get Involved</button></a>
   </section>
   <section class="section" id="about">
     <h2>About Us</h2>
-    <p>Hope for All is a non-profit organization dedicated to supporting underprivileged communities through education, healthcare, and empowerment programs. Our mission is to create lasting change and offer hope to those in need.</p>
+    <p> Jana Kalyan Welfare Society is a non-profit organization dedicated to supporting underprivileged communities through education, healthcare, and empowerment programs. Our mission is to create lasting change and offer hope to those in need.</p>
   </section>
   <section class="section" id="programs">
     <h2>Our Programs</h2>
@@ -194,6 +194,7 @@
       const loadingBar = document.getElementById('loadingBar');
       const loader = document.getElementById('loader');
       const loaderContent = document.querySelector('.loader-content');
+      const loadingDots = document.getElementById('loading-dots');
       const minDisplayTime = 5000; // 5 seconds
       const startTime = Date.now();
       // Always reset loader state on page load
@@ -214,6 +215,12 @@
       } else {
         loaderContent.style.opacity = 1;
       }
+      // Animate loading dots
+      let dotCount = 0;
+      let dotsInterval = setInterval(() => {
+        dotCount = (dotCount + 1) % 4;
+        loadingDots.textContent = '.'.repeat(dotCount);
+      }, 500);
       // Animate loading bar over 5 seconds
       function animateBar() {
         const elapsed = Date.now() - startTime;
@@ -230,6 +237,7 @@
       function tryHideLoader() {
         if (pageLoaded && minTimeElapsed) {
           loader.classList.add('fade-out');
+          clearInterval(dotsInterval);
           setTimeout(() => loader.style.display = 'none', 900);
         }
       }
