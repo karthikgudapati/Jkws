@@ -196,6 +196,16 @@
       const loaderContent = document.querySelector('.loader-content');
       const minDisplayTime = 5000; // 5 seconds
       const startTime = Date.now();
+      // Always reset loader state on page load
+      loader.style.display = '';
+      loader.classList.remove('fade-out');
+      // Also reset transforms for curtain halves
+      const loaderTop = document.querySelector('.loader-top');
+      const loaderBottom = document.querySelector('.loader-bottom');
+      if (loaderTop && loaderBottom) {
+        loaderTop.style.transform = '';
+        loaderBottom.style.transform = '';
+      }
       // Wait for font to load before showing loader content
       if (document.fonts) {
         document.fonts.load('1rem "Press Start 2P"').then(function() {
