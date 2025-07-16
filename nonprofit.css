@@ -76,6 +76,75 @@ nav {
   justify-content: center;
   flex-wrap: wrap;
   gap: 0.5rem;
+  background: #222;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.18), 0 1.5px 0 #444 inset;
+  border-radius: 12px;
+  padding: 1rem 2rem;
+  margin: 1.5rem auto 2rem auto;
+  max-width: 900px;
+}
+nav a {
+  text-decoration: none;
+}
+nav button {
+  background: #2d6a4f;
+  color: #fff;
+  border: none;
+  padding: 0.75rem 2rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: bold;
+  box-shadow: 0 4px 16px rgba(64, 145, 108, 0.18), 0 1.5px 0 #40916c inset;
+  position: relative;
+  z-index: 1;
+  transition: transform 0.15s cubic-bezier(.4,2,.6,1), box-shadow 0.18s, background 0.18s;
+  outline: none;
+  overflow: visible;
+  margin: 0 0.25rem;
+}
+nav button::before {
+  content: '';
+  position: absolute;
+  top: -4px; left: -4px; right: -4px; bottom: -4px;
+  border-radius: 12px;
+  z-index: -1;
+  background: conic-gradient(
+    red, orange, yellow, green, cyan, blue, violet, red
+  );
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+  animation: none;
+  padding: 0;
+  /* Mask out the center for a border effect */
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  mask:
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+}
+nav button:hover::before {
+  opacity: 1;
+  animation: rainbow-border-edges 2s linear infinite;
+}
+@keyframes rainbow-border-edges {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+nav button:hover {
+  background: #fff;
+  box-shadow: 0 0 16px 4px #ffd800, 0 4px 16px rgba(64, 145, 108, 0.18);
+  transform: scale(1.07);
+}
+nav button:active {
+  background: #1b4332;
+  box-shadow: 0 2px 8px #ff6a00, 0 1.5px 0 #40916c inset;
+  transform: scale(0.96);
 }
 button {
   background: #2d6a4f;
