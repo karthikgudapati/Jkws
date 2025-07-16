@@ -100,23 +100,23 @@ button:active {
 button::before {
   content: '';
   position: absolute;
-  top: -6px; left: -6px; right: -6px; bottom: -6px;
-  border-radius: 50%;
+  top: -4px; left: -4px; right: -4px; bottom: -4px;
+  border-radius: 8px;
   z-index: -1;
-  background: conic-gradient(
-    red, orange, yellow, lime, cyan, blue, violet, red
-  );
+  background: linear-gradient(270deg, red, orange, yellow, green, cyan, blue, violet, red);
+  background-size: 400% 400%;
   opacity: 0;
   transition: opacity 0.3s;
   pointer-events: none;
-  filter: blur(2px) brightness(1.2);
-  animation: none;
 }
 button:hover::before {
   opacity: 1;
-  animation: rainbow-spin 1.2s linear infinite;
+  animation: rainbow-border 2s linear infinite;
 }
-@keyframes rainbow-spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+@keyframes rainbow-border {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+button {
+  box-sizing: border-box;
 }
