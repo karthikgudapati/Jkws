@@ -89,9 +89,9 @@ nav a {
 nav button {
   background: #2d6a4f;
   color: #fff;
-  border: none;
+  border: 3px solid transparent;
   padding: 0.75rem 2rem;
-  border-radius: 8px;
+  border-radius: 10px;
   cursor: pointer;
   font-size: 1rem;
   font-weight: bold;
@@ -107,7 +107,7 @@ nav button::before {
   content: '';
   position: absolute;
   top: -4px; left: -4px; right: -4px; bottom: -4px;
-  border-radius: 12px;
+  border-radius: 14px;
   z-index: -1;
   background: conic-gradient(
     red, orange, yellow, green, cyan, blue, violet, red
@@ -116,17 +116,6 @@ nav button::before {
   transition: opacity 0.3s;
   pointer-events: none;
   animation: none;
-  padding: 0;
-  /* Mask out the center for a border effect */
-  -webkit-mask:
-    linear-gradient(#fff 0 0) content-box, 
-    linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  mask:
-    linear-gradient(#fff 0 0) content-box, 
-    linear-gradient(#fff 0 0);
-  mask-composite: exclude;
 }
 nav button:hover::before {
   opacity: 1;
@@ -138,11 +127,13 @@ nav button:hover::before {
 }
 nav button:hover {
   background: #fff;
+  color: #2d6a4f;
   box-shadow: 0 0 16px 4px #ffd800, 0 4px 16px rgba(64, 145, 108, 0.18);
   transform: scale(1.07);
 }
 nav button:active {
   background: #1b4332;
+  color: #fff;
   box-shadow: 0 2px 8px #ff6a00, 0 1.5px 0 #40916c inset;
   transform: scale(0.96);
 }
