@@ -73,25 +73,30 @@
 header {
   background: transparent;
   color: #fff;
-  padding: 1.5rem 0;
+  padding: 0;
   text-align: center;
   position: relative;
   z-index: 10;
+  height: 80px;
 }
 nav {
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: flex-end;
   gap: 0.5rem;
   background: transparent;
   box-shadow: none;
-  border-radius: 12px;
-  padding: 1rem 2rem;
-  margin: 1.5rem auto 2rem auto;
-  max-width: 900px;
-  overflow-x: auto;
+  border-radius: 0;
+  padding: 0;
+  margin: 0;
+  max-width: none;
+  overflow-x: visible;
   white-space: nowrap;
   flex-wrap: nowrap;
+  position: absolute;
+  top: 1rem;
+  right: 2rem;
+  z-index: 100;
 }
 nav a {
   text-decoration: none;
@@ -119,11 +124,24 @@ nav button {
 nav button::before {
   content: '';
   position: absolute;
-  top: -4px; left: -4px; right: -4px; bottom: -4px;
-  border-radius: 14px;
+  top: -3px; left: -3px; right: -3px; bottom: -3px;
+  border-radius: 13px;
   z-index: -1;
   background: conic-gradient(
-    red, orange, yellow, green, cyan, blue, violet, red
+    from 0deg,
+    #ff0000,
+    #ff8000,
+    #ffff00,
+    #80ff00,
+    #00ff00,
+    #00ff80,
+    #00ffff,
+    #0080ff,
+    #0000ff,
+    #8000ff,
+    #ff00ff,
+    #ff0080,
+    #ff0000
   );
   opacity: 0;
   transition: opacity 0.3s;
@@ -153,7 +171,7 @@ nav button:active {
 button {
   background: #2d6a4f;
   color: #fff;
-  border: none;
+  border: 3px solid transparent;
   padding: 0.75rem 2rem;
   border-radius: 4px;
   cursor: pointer;
@@ -173,23 +191,35 @@ button:active {
 button::before {
   content: '';
   position: absolute;
-  top: -4px; left: -4px; right: -4px; bottom: -4px;
-  border-radius: 8px;
+  top: -3px; left: -3px; right: -3px; bottom: -3px;
+  border-radius: 7px;
   z-index: -1;
-  background: linear-gradient(270deg, red, orange, yellow, green, cyan, blue, violet, red);
-  background-size: 400% 400%;
+  background: conic-gradient(
+    from 0deg,
+    #ff0000,
+    #ff8000,
+    #ffff00,
+    #80ff00,
+    #00ff00,
+    #00ff80,
+    #00ffff,
+    #0080ff,
+    #0000ff,
+    #8000ff,
+    #ff00ff,
+    #ff0080,
+    #ff0000
+  );
   opacity: 0;
   transition: opacity 0.3s;
   pointer-events: none;
+  animation: none;
 }
 button:hover::before {
   opacity: 1;
-  animation: rainbow-border 2s linear infinite;
+  animation: rainbow-border-edges 2s linear infinite;
 }
-@keyframes rainbow-border {
-  0% { background-position: 0% 50%; }
-  100% { background-position: 100% 50%; }
-}
+
 button {
   box-sizing: border-box;
 }
