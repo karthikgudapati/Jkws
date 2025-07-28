@@ -187,13 +187,20 @@ button:active {
     border-radius: 11px;
     z-index: -1;
     background-size: 400% 400%;
-    animation: rainbowMove 3s ease infinite;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    animation: none;
 }
 
 .rainbow-btn:hover {
     transform: translateY(-2px) !important;
     background: #2a2a2a !important;
     color: white !important;
+}
+
+.rainbow-btn:hover::before {
+    opacity: 1;
+    animation: rainbowMove 3s ease infinite;
 }
 
 .rainbow-btn:active {
