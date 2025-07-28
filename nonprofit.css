@@ -157,19 +157,20 @@ button:active {
 
 /* Smooth Animated Rainbow Border Button */
 .rainbow-btn {
-    position: relative;
-    padding: 15px 30px;
-    font-size: 16px;
-    font-weight: bold;
-    color: white;
-    background: #2a2a2a;
-    border: 3px solid transparent;
-    border-radius: 8px;
-    cursor: pointer;
-    text-decoration: none;
-    display: inline-block;
-    transition: transform 0.2s ease;
-    background-clip: padding-box;
+    position: relative !important;
+    padding: 15px 30px !important;
+    font-size: 16px !important;
+    font-weight: bold !important;
+    color: white !important;
+    background: #2a2a2a !important;
+    border: 3px solid transparent !important;
+    border-radius: 8px !important;
+    cursor: pointer !important;
+    text-decoration: none !important;
+    display: inline-block !important;
+    transition: transform 0.2s ease !important;
+    background-clip: padding-box !important;
+    box-shadow: none !important;
 }
 
 .rainbow-btn::before {
@@ -190,7 +191,15 @@ button:active {
 }
 
 .rainbow-btn:hover {
-    transform: translateY(-2px);
+    transform: translateY(-2px) !important;
+    background: #2a2a2a !important;
+    color: white !important;
+}
+
+.rainbow-btn:active {
+    transform: translateY(0px) scale(0.98) !important;
+    background: #2a2a2a !important;
+    color: white !important;
 }
 
 @keyframes rainbowMove {
