@@ -105,7 +105,7 @@ nav a {
 nav button {
   background: #2d6a4f;
   color: #fff;
-  border: 4px solid transparent;
+  border: none;
   padding: 0.75rem 1.2rem;
   border-radius: 10px;
   cursor: pointer;
@@ -120,42 +120,6 @@ nav button {
   margin: 0 0.15rem;
   display: inline-block;
   vertical-align: middle;
-}
-nav button::before {
-  content: '';
-  position: absolute;
-  top: -4px; left: -4px; right: -4px; bottom: -4px;
-  border-radius: 14px;
-  z-index: -1;
-  background: conic-gradient(
-    from 0deg,
-    #ff0000,
-    #ff8000,
-    #ffff00,
-    #80ff00,
-    #00ff00,
-    #00ff80,
-    #00ffff,
-    #0080ff,
-    #0000ff,
-    #8000ff,
-    #ff00ff,
-    #ff0080,
-    #ff0000
-  );
-  opacity: 0;
-  transition: opacity 0.3s;
-  pointer-events: none;
-  animation: none;
-}
-nav button:hover::before {
-  opacity: 1;
-  animation: rainbow-border-edges 1.5s linear infinite;
-  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.3));
-}
-@keyframes rainbow-border-edges {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
 }
 nav button:hover {
   background: #fff;
@@ -172,7 +136,7 @@ nav button:active {
 button {
   background: #2d6a4f;
   color: #fff;
-  border: 4px solid transparent;
+  border: none;
   padding: 0.75rem 2rem;
   border-radius: 4px;
   cursor: pointer;
@@ -190,37 +154,55 @@ button:active {
   transform: translateY(2px) scale(0.98);
   box-shadow: 0 2px 8px rgba(64, 145, 108, 0.15), 0 1px 2px rgba(0,0,0,0.10);
 }
-button::before {
-  content: '';
-  position: absolute;
-  top: -4px; left: -4px; right: -4px; bottom: -4px;
-  border-radius: 8px;
-  z-index: -1;
-  background: conic-gradient(
-    from 0deg,
-    #ff0000,
-    #ff8000,
-    #ffff00,
-    #80ff00,
-    #00ff00,
-    #00ff80,
-    #00ffff,
-    #0080ff,
-    #0000ff,
-    #8000ff,
-    #ff00ff,
-    #ff0080,
-    #ff0000
-  );
-  opacity: 0;
-  transition: opacity 0.3s;
-  pointer-events: none;
-  animation: none;
+
+/* Smooth Animated Rainbow Border Button */
+.rainbow-btn {
+    position: relative;
+    padding: 15px 30px;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    background: #2a2a2a;
+    border: 3px solid transparent;
+    border-radius: 8px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: transform 0.2s ease;
+    background-clip: padding-box;
 }
-button:hover::before {
-  opacity: 1;
-  animation: rainbow-border-edges 1.5s linear infinite;
-  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.3));
+
+.rainbow-btn::before {
+    content: '';
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    right: -3px;
+    bottom: -3px;
+    background: linear-gradient(45deg, 
+        #ff0000, #ff8800, #ffff00, #88ff00, 
+        #00ff00, #00ff88, #00ffff, #0088ff, 
+        #0000ff, #8800ff, #ff00ff, #ff0088, #ff0000);
+    border-radius: 11px;
+    z-index: -1;
+    background-size: 400% 400%;
+    animation: rainbowMove 3s ease infinite;
+}
+
+.rainbow-btn:hover {
+    transform: translateY(-2px);
+}
+
+@keyframes rainbowMove {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
 }
 .hero-modern {
   width: 100vw;
