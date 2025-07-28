@@ -105,7 +105,7 @@ nav a {
 nav button {
   background: #2d6a4f;
   color: #fff;
-  border: 3px solid transparent;
+  border: 4px solid transparent;
   padding: 0.75rem 1.2rem;
   border-radius: 10px;
   cursor: pointer;
@@ -124,8 +124,8 @@ nav button {
 nav button::before {
   content: '';
   position: absolute;
-  top: -3px; left: -3px; right: -3px; bottom: -3px;
-  border-radius: 13px;
+  top: -4px; left: -4px; right: -4px; bottom: -4px;
+  border-radius: 14px;
   z-index: -1;
   background: conic-gradient(
     from 0deg,
@@ -150,7 +150,8 @@ nav button::before {
 }
 nav button:hover::before {
   opacity: 1;
-  animation: rainbow-border-edges 2s linear infinite;
+  animation: rainbow-border-edges 1.5s linear infinite;
+  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.3));
 }
 @keyframes rainbow-border-edges {
   0% { transform: rotate(0deg); }
@@ -171,7 +172,7 @@ nav button:active {
 button {
   background: #2d6a4f;
   color: #fff;
-  border: 3px solid transparent;
+  border: 4px solid transparent;
   padding: 0.75rem 2rem;
   border-radius: 4px;
   cursor: pointer;
@@ -183,6 +184,7 @@ button {
   transition: transform 0.1s, box-shadow 0.2s;
   outline: none;
   overflow: visible;
+  box-sizing: border-box;
 }
 button:active {
   transform: translateY(2px) scale(0.98);
@@ -191,8 +193,8 @@ button:active {
 button::before {
   content: '';
   position: absolute;
-  top: -3px; left: -3px; right: -3px; bottom: -3px;
-  border-radius: 7px;
+  top: -4px; left: -4px; right: -4px; bottom: -4px;
+  border-radius: 8px;
   z-index: -1;
   background: conic-gradient(
     from 0deg,
@@ -217,11 +219,8 @@ button::before {
 }
 button:hover::before {
   opacity: 1;
-  animation: rainbow-border-edges 2s linear infinite;
-}
-
-button {
-  box-sizing: border-box;
+  animation: rainbow-border-edges 1.5s linear infinite;
+  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.3));
 }
 .hero-modern {
   width: 100vw;
